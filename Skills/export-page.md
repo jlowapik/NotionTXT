@@ -28,20 +28,21 @@ The response includes:
 
 ### 3. Serialize Blocks to Plain Text
 
-Convert each block to plain text using these rules:
+Strip all Notion/markdown formatting to produce flat, human-readable plain text.
 
 | Block type | Serialization |
 |------------|---------------|
-| `heading_1` | `# {text}` |
-| `heading_2` | `## {text}` |
-| `heading_3` | `### {text}` |
+| `heading_1` | `{TEXT}` (UPPERCASE, blank line before and after) |
+| `heading_2` | `{Text}` (Title Case, blank line before and after) |
+| `heading_3` | `{Text}` (as-is, blank line before and after) |
 | `paragraph` | `{text}` (blank line between paragraphs) |
 | `bulleted_list_item` | `- {text}` |
 | `numbered_list_item` | `{n}. {text}` (track numbering per consecutive run) |
-| `to_do` | `[x] {text}` if checked, `[ ] {text}` if unchecked |
-| `quote` | `> {text}` |
-| `code` | `` ```{language}\n{text}\n``` `` |
-| `divider` | `---` |
+| `to_do` (unchecked) | `- {text}` |
+| `to_do` (checked) | `- {text} (done)` |
+| `quote` | `"{text}"` |
+| `code` | `{text}` (plain text, no fences, no language tag) |
+| `divider` | (blank line — no visible marker) |
 | `image` | `[Image: {caption}] ({url})` — collect for Media section |
 | `file` | `[File: {name}] ({url})` — collect for Media section |
 | `video` | `[Video: {caption}] ({url})` — collect for Media section |
@@ -50,9 +51,9 @@ Convert each block to plain text using these rules:
 | Any other | `[Unsupported: {block_type}]` |
 
 Rich text formatting rules:
-- Bold, italic, strikethrough, underline: strip formatting, keep text only
+- Bold, italic, strikethrough, underline: strip all formatting, keep text only
 - Links: render as `{text} ({url})`
-- Inline code: wrap in single backticks
+- Inline code: keep text only, no backticks
 
 Blank line between blocks. For consecutive list items of the same type, no blank line between them.
 

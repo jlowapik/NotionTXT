@@ -50,16 +50,21 @@ Media section omitted if no media on page.
 
 ## Serialization Rules (v1)
 
+All output is flat, human-readable plain text — no markdown syntax.
+
 | Block type | Output |
 |------------|--------|
-| Heading 1/2/3 | `#` / `##` / `###` prefix |
+| Heading 1 | UPPERCASE text, blank lines around |
+| Heading 2 | Title Case text, blank lines around |
+| Heading 3 | Text as-is, blank lines around |
 | Paragraph | Plain text, blank line between |
 | Bulleted list | `- ` prefix |
 | Numbered list | `1. `, `2. `, etc. |
-| To-do | `[ ]` or `[x]` prefix |
-| Quote | `> ` prefix |
-| Code block | Triple backticks with language tag |
-| Divider | `---` |
+| To-do (unchecked) | `- ` prefix |
+| To-do (checked) | `- {text} (done)` |
+| Quote | `"{text}"` |
+| Code block | Plain text, no fences |
+| Divider | Blank line (no visible marker) |
 | Media (image/file/video) | `[Type: caption] (url)` |
 | Child page | `[Child page: title]` (no recursion) |
 | Unsupported | `[Unsupported: block_type]` |
