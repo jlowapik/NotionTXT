@@ -31,7 +31,7 @@
 ### Skills & Commands
 
 - [x] **SKLL-01**: Export Skill executes full fetch + clean + save workflow
-- [ ] **SKLL-02**: Slash command alias invokes export Skill
+- [x] **SKLL-02**: Slash command alias invokes export Skill
 - [ ] **SKLL-03**: Docs Skill generates README.md and usage guides in docs/
 - [ ] **SKLL-04**: Slash command alias invokes docs Skill
 
@@ -106,7 +106,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXPT-03 | Phase 2 | Done |
 | EXPT-04 | Phase 2 | Done |
 | SKLL-01 | Phase 2 | Done |
-| SKLL-02 | Phase 3 | Pending |
+| SKLL-02 | Phase 3 | Done |
 | SKLL-03 | Phase 4 | Pending |
 | SKLL-04 | Phase 4 | Pending |
 | DOCS-01 | Phase 4 | Pending |
@@ -127,4 +127,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-07*
-*Last updated: 2026-03-09 — Phase 2 complete*
+*Last updated: 2026-03-09 — Phase 3 complete*

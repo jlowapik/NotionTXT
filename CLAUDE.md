@@ -112,6 +112,33 @@ Output directory override (--out) works
 
 **Overwrite behavior:** Re-export overwrites existing file ✅
 
+## Phase 3 — Slash Command + Hardening Proof
+
+**Date verified:** 2026-03-09
+
+**Deliverables:**
+```
+.claude/skills/notion:export-page/SKILL.md
+spec/phase3.md
+```
+
+**Slash command:** `/notion:export-page`
+```
+Usage:  /notion:export-page <page-url-or-id> [--out=path] [--mode=overwrite|append]
+Tools:  notion-fetch, notion-search, Bash, Read, Write, Glob, Edit
+```
+
+**Error handling:**
+```
+No argument       → "Usage: /notion:export-page <page-url-or-id>"
+Invalid URL/ID    → "Invalid Notion page URL or ID: {input}"
+Page not found    → "Page not accessible. Ensure it's shared with the Notion integration."
+Empty page        → Exports header only, warns "Note: page has no content blocks."
+Unsupported block → "[Unsupported: block_type]" in output
+```
+
+**Workflow:** Parses arguments, validates input, delegates to `Skills/export-page.md` for full pipeline, returns confirmation.
+
 ## Planning
 
 Full project planning lives in `.planning/` — see PROJECT.md, REQUIREMENTS.md, ROADMAP.md.
