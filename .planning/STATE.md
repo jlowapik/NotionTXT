@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Paste a Notion page URL, get a clean .txt file — no manual copy-paste, no formatting noise, no lock-in.
-**Current focus:** Phase 2 - Export Pipeline
+**Current focus:** Phase 3 - Commands
 
 ## Current Position
 
-Phase: 2 of 4 (Export Pipeline)
+Phase: 3 of 4 (Commands)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-03-09 — Phase 1 MCP verification complete
+Last activity: 2026-03-09 — Phase 2 Export Pipeline complete
 
-Progress: [██░░░░░░░░] 20%
+Progress: [██████░░░░] 60%
 
 ## Performance Metrics
 
@@ -63,6 +63,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-09 (Phase 1 verification)
-Stopped at: Phase 1 complete, Phase 2 ready to plan
+Last session: 2026-03-09 (Phase 2 implementation)
+Stopped at: Phase 2 complete, Phase 3 ready to plan
 Resume file: None
