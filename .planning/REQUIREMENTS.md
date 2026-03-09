@@ -15,22 +15,22 @@
 
 ### MCP Integration
 
-- [ ] **MCP-01**: User can connect to Notion via official MCP server
-- [ ] **MCP-02**: User can fetch page content by Notion URL or page ID
-- [ ] **MCP-03**: User can read page properties (title, dates, tags, metadata)
-- [ ] **MCP-04**: User can read block content (text, headings, lists, quotes, media references)
-- [ ] **MCP-05**: User can read database content
+- [x] **MCP-01**: User can connect to Notion via official MCP server
+- [x] **MCP-02**: User can fetch page content by Notion URL or page ID
+- [x] **MCP-03**: User can read page properties (title, dates, tags, metadata)
+- [x] **MCP-04**: User can read block content (text, headings, lists, quotes, media references)
+- [x] **MCP-05**: User can read database content
 
 ### Export
 
-- [ ] **EXPT-01**: Content is stripped of Notion block formatting into flat readable plain text
-- [ ] **EXPT-02**: Output is saved as .txt file to default ./exports/ directory with configurable output path
-- [ ] **EXPT-03**: Output file is auto-named from page title (slugified)
-- [ ] **EXPT-04**: Page properties are included as header section in .txt output
+- [x] **EXPT-01**: Content is stripped of Notion block formatting into flat readable plain text
+- [x] **EXPT-02**: Output is saved as .txt file to default ./exports/ directory with configurable output path
+- [x] **EXPT-03**: Output file is auto-named from page title (slugified)
+- [x] **EXPT-04**: Page properties are included as header section in .txt output
 
 ### Skills & Commands
 
-- [ ] **SKLL-01**: Export Skill executes full fetch + clean + save workflow
+- [x] **SKLL-01**: Export Skill executes full fetch + clean + save workflow
 - [ ] **SKLL-02**: Slash command alias invokes export Skill
 - [ ] **SKLL-03**: Docs Skill generates README.md and usage guides in docs/
 - [ ] **SKLL-04**: Slash command alias invokes docs Skill
@@ -89,23 +89,23 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| GSD-01 | Phase 0 | Pending |
-| GSD-02 | Phase 0 | Pending |
-| GSD-03 | Phase 0 | Pending |
-| GSD-04 | Phase 0 | Pending |
-| PROC-01 | Phase 0 | Pending |
-| PROC-02 | Phase 0 | Pending |
-| PROC-03 | Phase 0 | Pending |
-| MCP-01 | Phase 1 | Pending |
-| MCP-02 | Phase 1 | Pending |
-| MCP-03 | Phase 1 | Pending |
-| MCP-04 | Phase 1 | Pending |
-| MCP-05 | Phase 1 | Pending |
-| EXPT-01 | Phase 2 | Pending |
-| EXPT-02 | Phase 2 | Pending |
-| EXPT-03 | Phase 2 | Pending |
-| EXPT-04 | Phase 2 | Pending |
-| SKLL-01 | Phase 2 | Pending |
+| GSD-01 | Phase 0 | Done |
+| GSD-02 | Phase 0 | Done |
+| GSD-03 | Phase 0 | Done |
+| GSD-04 | Phase 0 | Done |
+| PROC-01 | Phase 0 | Done |
+| PROC-02 | Phase 0 | Done |
+| PROC-03 | Phase 0 | Done |
+| MCP-01 | Phase 1 | Done |
+| MCP-02 | Phase 1 | Done |
+| MCP-03 | Phase 1 | Done |
+| MCP-04 | Phase 1 | Done |
+| MCP-05 | Phase 1 | Done |
+| EXPT-01 | Phase 2 | Done |
+| EXPT-02 | Phase 2 | Done |
+| EXPT-03 | Phase 2 | Done |
+| EXPT-04 | Phase 2 | Done |
+| SKLL-01 | Phase 2 | Done |
 | SKLL-02 | Phase 3 | Pending |
 | SKLL-03 | Phase 4 | Pending |
 | SKLL-04 | Phase 4 | Pending |
@@ -127,4 +127,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-07*
-*Last updated: 2026-03-07 after roadmap revision*
+*Last updated: 2026-03-09 — Phase 2 complete*
