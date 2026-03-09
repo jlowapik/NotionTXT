@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Paste a Notion page URL, get a clean .txt file — no manual copy-paste, no formatting noise, no lock-in.
-**Current focus:** Phase 0 - Spec + Project Setup
+**Current focus:** Phase 2 - Export Pipeline
 
 ## Current Position
 
-Phase: 0 of 4 (Spec + Project Setup)
+Phase: 2 of 4 (Export Pipeline)
 Plan: 0 of TBD in current phase
 Status: Ready to plan
-Last activity: 2026-03-07 — Roadmap revised with Phase 0-4 structure
+Last activity: 2026-03-09 — Phase 1 MCP verification complete
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
@@ -63,6 +63,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-07 (roadmap revision)
-Stopped at: Roadmap restructured to Phase 0-4, ready for phase 0 planning
+Last session: 2026-03-09 (Phase 1 verification)
+Stopped at: Phase 1 complete, Phase 2 ready to plan
 Resume file: None
