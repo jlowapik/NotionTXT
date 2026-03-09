@@ -118,9 +118,14 @@ Output directory override (--out) works
 
 **Deliverables:**
 ```
-.claude/skills/notion:export-page/SKILL.md
+.claude/skills/notion:export-page/SKILL.md   ← thin command wrapper only
 spec/phase3.md
 ```
+
+**Separation of concerns:**
+- All export pipeline logic lives in `Skills/export-page.md` (Phase 2)
+- SKILL.md is a command interface only: parse args → validate → delegate → report errors
+- Phase 3 introduces zero pipeline logic
 
 **Slash command:** `/notion:export-page`
 ```
@@ -128,7 +133,7 @@ Usage:  /notion:export-page <page-url-or-id> [--out=path] [--mode=overwrite|appe
 Tools:  notion-fetch, notion-search, Bash, Read, Write, Glob, Edit
 ```
 
-**Error handling:**
+**Error handling (command layer):**
 ```
 No argument       → "Usage: /notion:export-page <page-url-or-id>"
 Invalid URL/ID    → "Invalid Notion page URL or ID: {input}"
