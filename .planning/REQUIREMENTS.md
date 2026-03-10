@@ -32,14 +32,14 @@
 
 - [x] **SKLL-01**: Export Skill executes full fetch + clean + save workflow
 - [x] **SKLL-02**: Slash command alias invokes export Skill
-- [ ] **SKLL-03**: Docs Skill generates README.md and usage guides in docs/
-- [ ] **SKLL-04**: Slash command alias invokes docs Skill
+- [x] **SKLL-03**: Docs Skill generates README.md and usage guides in docs/
+- [x] **SKLL-04**: Slash command alias invokes docs Skill
 
 ### Documentation
 
-- [ ] **DOCS-01**: README.md with project overview, setup instructions, and quick start
-- [ ] **DOCS-02**: Per-Skill usage guides in docs/ folder
-- [ ] **DOCS-03**: All documentation generated exclusively by docs Skill
+- [x] **DOCS-01**: README.md with project overview, setup instructions, and quick start
+- [x] **DOCS-02**: Per-Skill usage guides in docs/ folder
+- [x] **DOCS-03**: All documentation generated exclusively by docs Skill
 
 ### GSD & Token Economy
 
@@ -107,11 +107,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXPT-04 | Phase 2 | Done |
 | SKLL-01 | Phase 2 | Done |
 | SKLL-02 | Phase 3 | Done |
-| SKLL-03 | Phase 4 | Pending |
-| SKLL-04 | Phase 4 | Pending |
-| DOCS-01 | Phase 4 | Pending |
-| DOCS-02 | Phase 4 | Pending |
-| DOCS-03 | Phase 4 | Pending |
+| SKLL-03 | Phase 4 | Done |
+| SKLL-04 | Phase 4 | Done |
+| DOCS-01 | Phase 4 | Done |
+| DOCS-02 | Phase 4 | Done |
+| DOCS-03 | Phase 4 | Done |
 
 **Coverage:**
 - v1 requirements: 19 total
@@ -127,4 +127,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-07*
-*Last updated: 2026-03-09 — Phase 3 complete*
+*Last updated: 2026-03-10 — Phase 4 complete, v1 done*
