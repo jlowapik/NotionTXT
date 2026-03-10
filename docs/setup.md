@@ -9,13 +9,13 @@
 
 1. Open Claude Code in this workspace
 2. The Notion MCP server connects automatically via Claude Code's cloud-hosted integration
-3. Verify connection: run `/mcp` — should show `claude_ai_NotionMCP` server with tools like `notion-fetch` and `notion-search`
+3. Verify connection: run `/mcp` — should show `claude_ai_NotionMCP` server with tools like `notion-fetch`, `notion-search`, `notion-create-pages`, and `notion-update-page`
 
 ## Share Pages with the Integration
 
-Notion pages must be explicitly shared with the integration before they can be exported.
+Notion pages must be explicitly shared with the integration before they can be accessed.
 
-1. Open the Notion page you want to export
+1. Open the Notion page you want to work with
 2. Click **Share** in the top right
 3. Invite the Notion integration (search for the connection name)
 4. The page (and its children) will become accessible via MCP
@@ -45,6 +45,14 @@ The page has properties but no content blocks. This is expected for blank pages.
 ### Export directory doesn't exist
 
 The `exports/` directory is created automatically on first export. If using `--out` to specify a custom directory, ensure the parent directory exists.
+
+### "File not found"
+
+When using `/notion:import-page`, the specified file path doesn't exist. Check that the path is correct and the file exists.
+
+### "--transform is required"
+
+When using `/notion:process-page`, you must specify a transformation type. Options: `summarize`, `action-items`, `translate:{lang}`, `reformat:bullets`, `reformat:outline`, `key-points`, or provide free-form custom text.
 
 ### `/mcp` doesn't show Notion server
 

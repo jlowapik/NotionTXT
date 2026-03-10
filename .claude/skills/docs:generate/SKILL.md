@@ -31,6 +31,8 @@ Follow the full workflow defined in `Skills/docs-generate.md`:
 2. Scan repository source files
 3. Generate README.md (if scope is `all` or `readme`)
 4. Generate docs/export-page.md (if scope is `all` or `docs`)
+4b. Generate docs/import-page.md (if scope is `all` or `docs`)
+4c. Generate docs/process-page.md (if scope is `all` or `docs`)
 5. Generate docs/commands.md (if scope is `all` or `docs`)
 6. Generate docs/setup.md (if scope is `all` or `docs`)
 7. Write files, overwriting existing content

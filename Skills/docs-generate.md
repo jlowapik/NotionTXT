@@ -24,10 +24,16 @@ Read source files to extract current project information:
 | `.planning/PROJECT.md` | Project overview, core value, constraints |
 | `.planning/REQUIREMENTS.md` | Requirements list and status |
 | `Skills/export-page.md` | Export workflow steps, serialization rules table |
+| `Skills/import-page.md` | Import workflow steps, text-to-blocks conversion rules |
+| `Skills/process-page.md` | Process workflow steps, transformation types |
 | `.claude/skills/notion:export-page/SKILL.md` | Export command syntax, parameters, error handling |
+| `.claude/skills/notion:import-page/SKILL.md` | Import command syntax, parameters, error handling |
+| `.claude/skills/notion:process-page/SKILL.md` | Process command syntax, parameters, error handling |
 | `.claude/skills/docs:generate/SKILL.md` | Docs command syntax, parameters |
 | `CLAUDE.md` | Architecture, phase proofs, constraints |
-| `spec/phase2.md` | Serialization rules reference |
+| `spec/phase2.md` | Export serialization rules reference |
+| `spec/phase2b.md` | Import conversion rules reference |
+| `spec/phase3b.md` | Transformation types reference |
 | `src/slugify.js` | Utility info (slugify + resolve functions) |
 
 Read each file. If a file is missing, skip it and note the gap.
@@ -43,7 +49,26 @@ If scope is `all` or `readme`, generate `README.md` with these sections:
 
 ## What It Does
 
-{2-3 sentence description of the export workflow}
+{2-3 sentence description of the full workflow: export, import, and AI processing}
+
+## Data Flow
+
+```mermaid
+flowchart LR
+  U[User] -->|/notion:export-page| CC[Claude Code]
+  U -->|/notion:import-page| CC
+  U -->|/notion:process-page| CC
+  CC -->|notion-fetch| MCP[Notion MCP]
+  MCP -->|page content| CC
+  CC -->|serialize| TXT[Plain Text]
+  TXT -->|write .txt| FS[(Local Filesystem)]
+  FS -->|read .txt| CC
+  CC -->|notion-create-pages| MCP
+  CC -->|notion-update-page| MCP
+  CC -->|AI transform| AI[AI Processing]
+  AI -->|transformed text| CC
+  CC -->|confirmation| U
+```
 
 ## Quick Start
 
@@ -62,6 +87,14 @@ If scope is `all` or `readme`, generate `README.md` with these sections:
 ### /notion:export-page
 
 {syntax, parameters table, example usage — from SKILL.md}
+
+### /notion:import-page
+
+{syntax, parameters table, example usage — from import SKILL.md}
+
+### /notion:process-page
+
+{syntax, parameters table, example usage — from process SKILL.md}
 
 ### /docs:generate
 
@@ -87,6 +120,8 @@ If scope is `all` or `readme`, generate `README.md` with these sections:
 
 Full reference docs in `docs/`:
 - [Export Page Workflow](docs/export-page.md)
+- [Import Page Workflow](docs/import-page.md)
+- [Process Page Workflow](docs/process-page.md)
 - [Commands Reference](docs/commands.md)
 - [Setup Guide](docs/setup.md)
 ```
@@ -135,6 +170,82 @@ If scope is `all` or `docs`, generate `docs/export-page.md` with:
 {error cases table from SKILL.md section 4}
 ```
 
+### 4b. Generate docs/import-page.md
+
+If scope is `all` or `docs`, generate `docs/import-page.md` with:
+
+```
+# Import Page Workflow
+
+## Overview
+
+{what the import skill does — from Skills/import-page.md intro}
+
+## Command
+
+{syntax from import SKILL.md}
+
+## Parameters
+
+{parameters table from Skills/import-page.md}
+
+## Workflow Steps
+
+{numbered list of the 7 steps from Skills/import-page.md}
+
+## Text-to-Blocks Conversion Rules
+
+{full conversion rules table from Skills/import-page.md step 4}
+
+## Header Property Mapping
+
+{header properties and their Notion property mappings from Skills/import-page.md step 2}
+
+## Create vs Update
+
+{operation resolution logic from Skills/import-page.md step 5}
+
+## Error Handling
+
+{error cases table from import SKILL.md section 2 and 4}
+```
+
+### 4c. Generate docs/process-page.md
+
+If scope is `all` or `docs`, generate `docs/process-page.md` with:
+
+```
+# Process Page Workflow
+
+## Overview
+
+{what the process skill does — from Skills/process-page.md intro}
+
+## Command
+
+{syntax from process SKILL.md}
+
+## Parameters
+
+{parameters table from Skills/process-page.md}
+
+## Workflow Steps
+
+{numbered list of the 9 steps from Skills/process-page.md}
+
+## Transformation Types
+
+{transformation types table from Skills/process-page.md step 4}
+
+## Output Page
+
+{output title generation and parent resolution from Skills/process-page.md steps 5 and 7}
+
+## Error Handling
+
+{error cases table from process SKILL.md section 2 and 4}
+```
+
 ### 5. Generate docs/commands.md
 
 If scope is `all` or `docs`, generate `docs/commands.md` with:
@@ -163,6 +274,50 @@ If scope is `all` or `docs`, generate `docs/commands.md` with:
 ### Error Messages
 
 {table: condition → message — from SKILL.md section 2 and 4}
+
+## /notion:import-page
+
+{description from import SKILL.md}
+
+### Syntax
+
+/notion:import-page <file-path> --parent=<page-or-db-id> [--page=<page-id>] [--mode=create|update]
+
+### Parameters
+
+{table: parameter, required, default, description — from import SKILL.md}
+
+### Examples
+
+/notion:import-page exports/my-page.txt --parent=https://notion.so/Parent-Page-abc123
+/notion:import-page exports/my-page.txt --page=abc123 --mode=update
+/notion:import-page notes.txt --parent=abc123
+
+### Error Messages
+
+{table: condition → message — from import SKILL.md section 2 and 4}
+
+## /notion:process-page
+
+{description from process SKILL.md}
+
+### Syntax
+
+/notion:process-page <page-url-or-id> --transform=<type> [--parent=<id>] [--title=<text>]
+
+### Parameters
+
+{table: parameter, required, default, description — from process SKILL.md}
+
+### Examples
+
+/notion:process-page https://notion.so/My-Page-abc123 --transform=summarize
+/notion:process-page abc123 --transform=translate:es
+/notion:process-page abc123 --transform=action-items --title="Q4 Tasks"
+
+### Error Messages
+
+{table: condition → message — from process SKILL.md section 2 and 4}
 
 ## /docs:generate
 
@@ -238,7 +393,7 @@ The `exports/` directory is created automatically on first export. If using `--o
 Based on the scope parameter:
 
 - If `readme` or `all`: write `README.md` at project root
-- If `docs` or `all`: ensure `docs/` directory exists, write `docs/export-page.md`, `docs/commands.md`, `docs/setup.md`
+- If `docs` or `all`: ensure `docs/` directory exists, write `docs/export-page.md`, `docs/import-page.md`, `docs/process-page.md`, `docs/commands.md`, `docs/setup.md`
 
 Overwrite any existing files.
 
