@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git rm:*)",
+      "Bash(git update-ref:*)",
+      "Bash(git push:*)",
+      "mcp__claude_ai_NotionMCP__notion-fetch",
+      "mcp__claude_ai_NotionMCP__notion-create-pages",
+      "mcp__claude_ai_NotionMCP__notion-update-page"
+    ]
+  }
+}
