@@ -227,6 +227,23 @@ MCP failure       → "Notion API error: {error message}"
 Page not found    → "Page not accessible. Ensure it's shared with the Notion integration."
 ```
 
+**Import test:** "Quarterly sales planning" round-trip ✅
+```
+Input:   exports/quarterly-sales-planning.txt
+Parent:  Projects database (31e174e5-ef2a-80a8-a5f7-c2eb2d4c2157)
+Command: /notion:import-page exports/quarterly-sales-planning.txt --parent=31e174e5-ef2a-80a8-a5f7-c2eb2d4c2157
+Result:  Page created successfully
+```
+
+**Import result:** https://www.notion.so/31f174e5ef2a81aabe63e2206d6e4392
+```
+Title:      Quarterly sales planning (imported)
+Properties: Team: Account Management, Status: Not started, Priority: Medium
+            Start date: 2025-03-24, End date: 2025-03-28
+Blocks:     5 created (2 heading_2, 1 paragraph, 1 bulleted_list_item, 1 heading_2)
+Skipped:    3 ([Unsupported: external_object_instance] x2, [Unsupported: pdf] x1)
+```
+
 **Workflow:** Reads .txt file, parses header/body, converts text to Notion blocks, calls MCP to create or update page, returns confirmation.
 
 ## Phase 3b — AI Transformation Pipeline Proof
@@ -270,6 +287,25 @@ Invalid URL/ID     → "Invalid Notion page URL or ID: {input}"
 Page not found     → "Page not accessible. Ensure it's shared with the Notion integration."
 Empty page         → "Page has no content to transform."
 Create failure     → "Failed to create output page: {error message}"
+```
+
+**Process test:** "Quarterly sales planning" summarize ✅
+```
+Source:    https://www.notion.so/31e174e5ef2a8028b25fe26a47ed0009
+Transform: summarize
+Command:   /notion:process-page https://www.notion.so/31e174e5ef2a8028b25fe26a47ed0009 --transform=summarize
+Result:    Summary page created successfully
+```
+
+**Process result:** https://www.notion.so/31f174e5ef2a8111a9ebfc6e7739626b
+```
+Title:    Quarterly sales planning — Summary
+Parent:   Projects database (same as source)
+Blocks:   1 (paragraph with concise summary)
+Source:   Not modified ✅
+Summary:  "A quarterly sales planning project assigned to Account Management,
+           currently not started, with medium priority. Scheduled March 24–28, 2025.
+           The project needs goals and context defined and has one pending action item."
 ```
 
 **Workflow:** Fetches Notion page via MCP, serializes to plain text, applies AI transformation, converts result to Notion blocks, creates new page via MCP, returns confirmation.
