@@ -15,7 +15,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 0: Spec + Project Setup** - Specification with Mermaid diagram, GSD installation, planning files, directory scaffolding
 - [x] **Phase 1: Notion MCP Connection** - MCP verification only, no custom code
 - [x] **Phase 2: Export Pipeline** - Export Skill with fetch + clean + save workflow
+- [x] **Phase 2b: Import Pipeline** - Import Skill with read + parse + convert + create/update workflow
 - [x] **Phase 3: Commands** - Slash command interface for export invocation
+- [x] **Phase 3b: AI Transformation Pipeline** - Process Skill with fetch + transform + create workflow
 - [x] **Phase 4: Docs** - Documentation generation Skill and command alias
 
 ## Phase Details
@@ -68,6 +70,22 @@ Plans:
 Plans:
 - [ ] TBD
 
+### Phase 2b: Import Pipeline
+**Goal**: Users can import a local .txt file back to Notion as a new or updated page via Skill invocation
+**Depends on**: Phase 2
+**Requirements**: IMPT-01, IMPT-02, IMPT-03, IMPT-04, IMPT-05, SKLL-05, SKLL-06
+**Success Criteria** (what must be TRUE):
+  1. Import Skill reads a .txt file and creates a new Notion page via MCP
+  2. Import Skill can update an existing Notion page via MCP
+  3. Header properties are mapped to Notion page properties
+  4. Body text is converted to appropriate Notion block types
+  5. File format validation rejects files without header/separator
+  6. Slash command invokes import Skill
+**Plans**: TBD
+
+Plans:
+- [ ] TBD
+
 ### Phase 3: Commands
 **Goal**: Users can export Notion pages via slash command shortcuts
 **Depends on**: Phase 2
@@ -76,6 +94,22 @@ Plans:
   1. Slash command invokes export Skill
   2. Command accepts Notion URL or page ID as parameter
   3. Command accepts optional output path parameter
+**Plans**: TBD
+
+Plans:
+- [ ] TBD
+
+### Phase 3b: AI Transformation Pipeline
+**Goal**: Users can fetch a Notion page, apply an AI transformation, and save the result as a new Notion page
+**Depends on**: Phase 2, Phase 2b
+**Requirements**: XFRM-01, XFRM-02, XFRM-03, XFRM-04, XFRM-05, SKLL-07, SKLL-08
+**Success Criteria** (what must be TRUE):
+  1. Process Skill fetches a Notion page and applies an AI transformation
+  2. Transformed content is written as a new Notion page via MCP
+  3. Predefined transformation types produce appropriate output
+  4. Free-form custom transformations are supported
+  5. Source page is not modified
+  6. Slash command invokes process Skill
 **Plans**: TBD
 
 Plans:
@@ -99,12 +133,14 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 → 1 → 2 → 3 → 4
+Phases execute in numeric order: 0 → 1 → 2 → 2b → 3 → 3b → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 0. Spec + Project Setup | Done | Complete | 2026-03-07 |
 | 1. Notion MCP Connection | Done | Complete | 2026-03-09 |
 | 2. Export Pipeline | Done | Complete | 2026-03-09 |
+| 2b. Import Pipeline | Done | Complete | 2026-03-10 |
 | 3. Commands | Done | Complete | 2026-03-09 |
+| 3b. AI Transformation Pipeline | Done | Complete | 2026-03-10 |
 | 4. Docs | Done | Complete | 2026-03-10 |

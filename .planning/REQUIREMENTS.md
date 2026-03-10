@@ -35,6 +35,26 @@
 - [x] **SKLL-03**: Docs Skill generates README.md and usage guides in docs/
 - [x] **SKLL-04**: Slash command alias invokes docs Skill
 
+### Import (Phase 2b)
+
+- [x] **IMPT-01**: User can create a new Notion page from a local .txt file via MCP
+- [x] **IMPT-02**: User can update an existing Notion page from a local .txt file via MCP
+- [x] **IMPT-03**: Header properties (title, tags, status, priority, dates) are mapped to Notion page properties
+- [x] **IMPT-04**: Body text is converted to appropriate Notion block types (reverse of export serialization)
+- [x] **IMPT-05**: File format is validated (requires header section with --- separator)
+- [x] **SKLL-05**: Import Skill executes full read + parse + convert + create/update workflow
+- [x] **SKLL-06**: Slash command alias invokes import Skill
+
+### AI Transformation (Phase 3b)
+
+- [x] **XFRM-01**: User can apply an AI transformation to a Notion page and save result as a new page
+- [x] **XFRM-02**: Predefined transformation types are supported (summarize, action-items, translate, reformat, key-points)
+- [x] **XFRM-03**: Free-form custom transformation instructions are supported
+- [x] **XFRM-04**: Transformed content is written to Notion as a new page via MCP
+- [x] **XFRM-05**: Process Skill reuses export fetch/serialize and import block conversion logic
+- [x] **SKLL-07**: Process Skill executes full fetch + serialize + transform + create workflow
+- [x] **SKLL-08**: Slash command alias invokes process Skill
+
 ### Documentation
 
 - [x] **DOCS-01**: README.md with project overview, setup instructions, and quick start
@@ -112,19 +132,35 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DOCS-01 | Phase 4 | Done |
 | DOCS-02 | Phase 4 | Done |
 | DOCS-03 | Phase 4 | Done |
+| IMPT-01 | Phase 2b | Done |
+| IMPT-02 | Phase 2b | Done |
+| IMPT-03 | Phase 2b | Done |
+| IMPT-04 | Phase 2b | Done |
+| IMPT-05 | Phase 2b | Done |
+| SKLL-05 | Phase 2b | Done |
+| SKLL-06 | Phase 2b | Done |
+| XFRM-01 | Phase 3b | Done |
+| XFRM-02 | Phase 3b | Done |
+| XFRM-03 | Phase 3b | Done |
+| XFRM-04 | Phase 3b | Done |
+| XFRM-05 | Phase 3b | Done |
+| SKLL-07 | Phase 3b | Done |
+| SKLL-08 | Phase 3b | Done |
 
 **Coverage:**
-- v1 requirements: 19 total
-- Mapped to phases: 19
+- v1 requirements: 33 total
+- Mapped to phases: 33
 - Unmapped: 0
 
 **Phase Distribution:**
 - Phase 0: 7 requirements (GSD setup + process gates + scaffolding)
 - Phase 1: 5 requirements (MCP connection verification including database)
 - Phase 2: 5 requirements (Export Skill core)
+- Phase 2b: 7 requirements (Import Skill + command)
 - Phase 3: 1 requirement (Export command interface)
+- Phase 3b: 7 requirements (Process Skill + command)
 - Phase 4: 5 requirements (Docs Skill + documentation)
 
 ---
 *Requirements defined: 2026-03-07*
-*Last updated: 2026-03-10 — Phase 4 complete, v1 done*
+*Last updated: 2026-03-10 — Phase 3b complete, all phases done*

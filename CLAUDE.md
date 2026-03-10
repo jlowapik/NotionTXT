@@ -180,6 +180,116 @@ docs/setup.md          → prerequisites, MCP connection, page sharing, verifica
 
 **Single source of truth:** All documentation is generated exclusively by the Docs Skill. No manual edits to README.md or docs/ — regenerate with `/docs:generate` to update.
 
+## Phase 2b — Import Pipeline Proof
+
+**Date verified:** 2026-03-10
+
+**Deliverables:**
+```
+Skills/import-page.md                        ← all import pipeline logic
+.claude/skills/notion:import-page/SKILL.md   ← thin command wrapper only
+.claude/settings.local.json                  ← added notion-create-pages, notion-update-page permissions
+spec/phase2b.md
+```
+
+**Separation of concerns:**
+- All import pipeline logic lives in `Skills/import-page.md` (Phase 2b)
+- SKILL.md is a command interface only: parse args → validate → delegate → report errors
+- Phase 2b introduces zero export pipeline logic
+
+**Slash command:** `/notion:import-page`
+```
+Usage:  /notion:import-page <file-path> --parent=<page-or-db-id> [--page=<page-id>] [--mode=create|update]
+Tools:  notion-create-pages, notion-update-page, notion-fetch, Bash, Read, Write, Glob, Edit
+```
+
+**Text-to-blocks conversion (reverse of export serialization):**
+```
+UPPERCASE line          → heading_1
+Title Case line         → heading_2
+- text (done)           → to_do (checked)
+- text                  → bulleted_list_item
+n. text                 → numbered_list_item
+"text"                  → quote
+[Image/File/Video: ...] → paragraph (reference)
+[Child page: ...]       → skip
+[Unsupported: ...]      → skip
+Other text              → paragraph
+```
+
+**Error handling (command layer):**
+```
+No argument       → "Usage: /notion:import-page <file-path> --parent=<page-or-db-id>"
+File not found    → "File not found: {path}"
+Invalid format    → "Invalid file format: expected header section with --- separator"
+No parent         → "--parent is required when creating a new page"
+MCP failure       → "Notion API error: {error message}"
+Page not found    → "Page not accessible. Ensure it's shared with the Notion integration."
+```
+
+**Workflow:** Reads .txt file, parses header/body, converts text to Notion blocks, calls MCP to create or update page, returns confirmation.
+
+## Phase 3b — AI Transformation Pipeline Proof
+
+**Date verified:** 2026-03-10
+
+**Deliverables:**
+```
+Skills/process-page.md                         ← all transformation logic
+.claude/skills/notion:process-page/SKILL.md    ← thin command wrapper only
+spec/phase3b.md
+```
+
+**Separation of concerns:**
+- All transformation logic lives in `Skills/process-page.md` (Phase 3b)
+- SKILL.md is a command interface only: parse args → validate → delegate → report errors
+- Phase 3b reuses serialization from Phase 2 and block conversion from Phase 2b
+
+**Slash command:** `/notion:process-page`
+```
+Usage:  /notion:process-page <page-url-or-id> --transform=<type> [--parent=<id>] [--title=<text>]
+Tools:  notion-fetch, notion-create-pages, notion-search, Bash, Read, Write, Glob, Edit
+```
+
+**Supported transforms:**
+```
+summarize           → concise summary
+action-items        → extracted checklist
+translate:{lang}    → translated content
+reformat:bullets    → bullet points
+reformat:outline    → hierarchical outline
+key-points          → main takeaways
+{free-form text}    → custom transformation
+```
+
+**Error handling (command layer):**
+```
+No argument        → "Usage: /notion:process-page <page-url-or-id> --transform=<type>"
+Missing transform  → "--transform is required. Options: summarize, action-items, ..."
+Invalid URL/ID     → "Invalid Notion page URL or ID: {input}"
+Page not found     → "Page not accessible. Ensure it's shared with the Notion integration."
+Empty page         → "Page has no content to transform."
+Create failure     → "Failed to create output page: {error message}"
+```
+
+**Workflow:** Fetches Notion page via MCP, serializes to plain text, applies AI transformation, converts result to Notion blocks, creates new page via MCP, returns confirmation.
+
+## Retrospective: Phases 2b–3b
+
+Phases 2b (Import) and 3b (Process) were added after the core export pipeline (Phases 0–4) to complete the assignment's Phase 2 (import) and Phase 3 (process) requirements. This was a conscious prioritization: the export pipeline was built and hardened first, then write-back capabilities were layered on top using the same architecture.
+
+**What changed:**
+- Scope expanded beyond read-only — two new MCP write tools needed (`notion-create-pages`, `notion-update-page`)
+- Text-to-blocks conversion added (reverse of export serialization)
+- New AI transformation pipeline introduced
+
+**What stayed the same:**
+- Skills pattern (Skill.md has logic, SKILL.md is thin wrapper)
+- Spec-before-code rule (spec commit precedes implementation)
+- Zero comments in source code
+- Docs Skill owns all documentation
+- MCP-only Notion access (no custom HTTP calls)
+
 ## Planning
 
 Full project planning lives in `.planning/` — see PROJECT.md, REQUIREMENTS.md, ROADMAP.md.

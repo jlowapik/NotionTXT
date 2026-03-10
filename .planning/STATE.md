@@ -5,14 +5,14 @@
 See: .planning/PROJECT.md (updated 2026-03-07)
 
 **Core value:** Paste a Notion page URL, get a clean .txt file — no manual copy-paste, no formatting noise, no lock-in.
-**Current focus:** v1 complete
+**Current focus:** All phases complete (export + import + process + docs)
 
 ## Current Position
 
-Phase: 4 of 4 (Docs) — Complete
+Phase: 4 of 4 + 2b + 3b — All Complete
 Plan: Done
 Status: Complete
-Last activity: 2026-03-10 — Phase 4 Docs complete
+Last activity: 2026-03-10 — Phases 2b (Import) and 3b (Process) complete
 
 Progress: [██████████] 100%
 
@@ -48,6 +48,7 @@ Recent decisions affecting current work:
 - Docs Skill owns all documentation — Prevents scattered doc generation, single source of truth
 - Phase 0 combines spec + GSD setup + process gates — First commit is spec, scaffolding happens in Phase 0
 - Phase 1 is MCP verification only — No custom code, strictly connection/read verification
+- Phases 2b and 3b added post-v1 — Import and process capabilities layered on top of export pipeline
 
 ### Pending Todos
 
@@ -63,6 +64,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10 (Phase 4 implementation)
-Stopped at: Phase 4 complete, v1 done
+Last session: 2026-03-10 (Phases 2b + 3b implementation)
+Stopped at: All phases complete
 Resume file: None
